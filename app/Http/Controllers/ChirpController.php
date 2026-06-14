@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ChirpController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
@@ -45,10 +46,7 @@ class ChirpController extends Controller
             ]
         );
 
-        Chirp::create([
-            'message' => $validated['message'],
-            'user_id' => null,
-        ]);
+        auth()->user()->chirps()->create($validated);
 
         return redirect('/')->with('success', 'Your chirp has been posted!');
     }
@@ -67,6 +65,11 @@ class ChirpController extends Controller
     public function edit(Chirp $chirp)
     {
         //
+
+        if ($chirp->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('chirps.edit', compact('chirp'));
     }
 
@@ -76,6 +79,10 @@ class ChirpController extends Controller
     public function update(Request $request, Chirp $chirp)
     {
         //
+        if ($chirp->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
@@ -91,8 +98,13 @@ class ChirpController extends Controller
     public function destroy(Chirp $chirp)
     {
         //
+
+        if ($chirp->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $chirp->delete();
 
-        return redirect('/')->with('success', 'Your chirps has been deleted!');
+        return redirect('/')->with('success', 'Your chirp has been deleted!');
     }
 }
