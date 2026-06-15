@@ -17,6 +17,18 @@
     <div class="navbar-start">
         <a href="/" class="btn btn-ghost text-xl">🐦 Chirper</a>
     </div>
+    <div class="navbar-middle">
+        <form method="GET" action="/" class="flex items-center gap-1 space-x-1">
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+            <input type="text"
+                   name="search"
+                   placeholder="Search"
+                   value="{{ request('search') }}"
+                   class="input input-bordered"
+                   required>
+            <a href="/" >Clear</a>
+        </form>
+    </div>
     <div class="navbar-end gap-2">
         @auth
             <span class="text-sm">{{ auth()->user()->name }}</span>
