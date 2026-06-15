@@ -12,13 +12,26 @@ class ChirpController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $chirps = Chirp::with('user')
-        ->latest()
-        ->take(50)
-        ->get();
+        $validated  = $request->validate([
+            'search' => 'nullable|string',
+        ]);
+
+
+        if ($request->filled('search')) {
+
+            $chirps = Chirp::with('user')
+                ->where('message', 'like', '%' . $validated['search'] . '%')
+                ->latest()
+                ->get();
+        } else {
+            $chirps = Chirp::with('user')
+                ->latest()
+                ->take(50)
+                ->get();
+        }
 
         return view('home', ['chirps' => $chirps]);
     }
