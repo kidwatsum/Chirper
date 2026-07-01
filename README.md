@@ -17,31 +17,32 @@ Chirper allows users to create accounts, authenticate securely, and share short 
 ## 🛠️ Tech Stack
 
 - **Backend:** Laravel 11 (PHP)
-- **Frontend:** Blade / Inertia.js (depending on your stack) + Tailwind CSS
+- **Frontend:** Blade + Tailwind CSS
 - **UI Components:** Magic UI
-- **Database:** MySQL / PostgreSQL / SQLite
+- **Database:** SQLite
 
 ---
 
 ## 📸 Screenshots
 
 - **Sign Up Page**
-  ![alt text](image.png)
+  ![alt text](/docs/images/register.png)
 
 - **Login Page**
-  ![alt text](image-1.png)
+  ![alt text](/docs/images/login.png)
 
 - **Main Page**
-  ![alt text](image-2.png)
+  ![alt text](/docs/images/main1.png)
+  ![alt text](/docs/images/main2.png)
 
 - **Edit Page**
-  ![alt text](image-3.png)
-  ![alt text](image-4.png)
+  ![alt text](/docs/images/edit1.png)
+  ![alt text](/docs/images/edit2.png)
 
 - **Deleting a Chirp**
-  ![alt text](image-5.png)
-  ![alt text](image-6.png)
+  ![alt text](/docs/images/delete1.png)
+  ![alt text](/docs/images/delete2.png)
 
 - **Search page**
-  ![alt text](image-7.png)
-  ![alt text](image-8.png)
+  ![alt text](/docs/images/search1.png)
+  ![alt text](/docs/images/search2.png)
