@@ -35,6 +35,7 @@ pipeline {
                         cp .env.example .env.testing
                     fi
                     php artisan key:generate --env=testing
+                    php artisan migrate --force --env=testing
                 '''
             }
         }
