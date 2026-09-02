@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        PATH = "/usr/local/bin:/usr/bin:/bin:${env.PATH}"
+        PATH = "/home/martinjovanovski/.config/herd-lite/bin:/usr/local/bin:/usr/bin:/bin:${env.PATH}"
         DB_CONNECTION = 'sqlite'
         DB_DATABASE = ':memory:'
         APP_ENV = 'testing'
